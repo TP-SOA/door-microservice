@@ -10,12 +10,12 @@ public class DoorModel {
 	public static List<Door> doorList = new ArrayList<>();
 
 	static {
-		doorList.add(new Door(1, true));
+		doorList.add(new Door(1, false));
 		doorList.add(new Door(7, false));
 		doorList.add(new Door(11, false));
-		doorList.add(new Door(114, true));
+		doorList.add(new Door(114, false));
 		doorList.add(new Door(116, false));
-		doorList.add(new Door(213, false));
+		doorList.add(new Door(213, true));
 	}
 
 	public List<Door> findAll() {

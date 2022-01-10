@@ -5,6 +5,8 @@ import org.json.JSONObject;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 @RestController
 public class DoorController {
@@ -12,6 +14,17 @@ public class DoorController {
 
 	public DoorController(DoorModel doorModel){
 		this.doorModel = doorModel;
+		Timer t = new Timer();
+		// Update door status every 10 seconds
+		t.schedule(new TimerTask() {
+			@Override
+			public void run() {
+				Door d = doorModel.findById(114);
+				if (d != null) {
+					d.setLocked(!d.isLocked());
+				}
+			}
+		}, 0, 30*1000);
 	}
 
 	@GetMapping("/doors")
